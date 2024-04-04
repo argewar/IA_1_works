@@ -11,11 +11,10 @@ class Main:
             # o primeiro é nome da base de regras e
             # o segundo é lista de várias presentes na base de regras.
             # Essas variáveis fazem parte dos possíveis objetivos
-            br_eletric_fail = RuleBaseEletric("Problemas Eletricos Rule Base",
-                                               "[problema eletrico] :")
-            self.app.add_rule_base(br_eletric_fail)
+            br_eletric = RuleBaseEletric("Problemas Eletricos Rule Base","[problema eletrico] :")
+            self.app.add_rule_base(br_eletric)
             self.app.menu()
-        except Exception as e:
+        except Exception as e:  
             print("Exception: RuleApp ", e.with_traceback())
 
 

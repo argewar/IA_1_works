@@ -57,6 +57,7 @@ class RuleBaseVehicle:
         motocicleta = Rule(self.br, "motocicleta", [
             Clause(tipo_de_veiculo, c_equals, "velocipede"),
             Clause(numero_de_rodas, c_equals, "2"),
+            Clause(tamanho, c_equals, "pequeno"),
             Clause(motor, c_equals, "sim")
        ], Clause(veiculo, c_equals, "motocicleta"))
 
@@ -99,9 +100,9 @@ class RuleBaseVehicle:
         LOG.append("\n --- Ajustando valores para Tipo de Veículo para demo ForwardChain --- ")
         self.br.set_variable_value("veiculo", None)
         self.br.set_variable_value("tipoDeVeiculo", None)
-        self.br.set_variable_value("tamanho", "grande")
+        self.br.set_variable_value("tamanho", "medio")
         self.br.set_variable_value("numeroDeRodas", "4")
-        self.br.set_variable_value("numeroDePortas", "4")
+        self.br.set_variable_value("numeroDePortas", "2")
         self.br.set_variable_value("motor", "sim")
         self.br.display_variables(LOG)
 
