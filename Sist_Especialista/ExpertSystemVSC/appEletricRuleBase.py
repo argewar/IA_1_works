@@ -14,44 +14,64 @@ class RuleBaseEletric:
         return self.lista_de_objetivos
     
     def create(self):
-        problema_eletrico = RuleVariable(self.br, "problema_eletrico")
-        problema_eletrico.set_labels("iluminacao tomada comum tomada especifica")
-        problema_eletrico.set_prompt_text("qual falha eletrica o comodo está apresentando?{iluminacao tomada comum tomada especifica}")
+        #regras e variáveis para problema iluminção
+        #trabalhar problemas nos tipos de interruptores (simples, duplo, triplo, paralelo)
 
-        quantas_teclas = RuleVariable(self.br, "quantas_teclas")
-        quantas_teclas.set_labels("uma tecla duas teclas tres teclas")
-        quantas_teclas.set_prompt_text("este interruptor possui mais de uma tecla?{sim nao}")
+        problema_iluminacao = RuleVariable(self.br, "iluminacao")
+        problema_iluminacao.set_labels("problema eletrico na iluminacao")
+        problema_iluminacao.set_prompt_text("qual falha eletrica a iluminacao esta apresentando?{iluminacao }")
 
-        acionamento = RuleVariable(self.br, "acionamento")
-        acionamento.set_labels("um ponto dois pontos tres pontos")
-        acionamento.set_prompt_text("este interruptor aciona a mesma lampada em mais de um local?{sim nao}")
+        tp_interruptor = RuleVariable(self.br, "tp_interruptor")
+        tp_interruptor.set_labels("simples duplo paralelo")
+        tp_interruptor.set_prompt_text("qual tipo de interruptor? {simples duplo paralelo}")
 
-        tomada_int = RuleVariable(self.br, "tomada_int")
-        tomada_int.set_labels("interruptor com tomada")
-        tomada_int.set_prompt_text("este interruptor possui tomada no mesmo modulo?{sim nao}")
+        tr_iluminacao = RuleVariable(self.br, "tr_iluminacao")
+        tr_iluminacao.set_labels("troca da iluminacao")
+        tr_iluminacao.set_prompt_text("lampada ja foi trocada? {sim nao}")
 
-        ligacao = RuleVariable(self.br, "ligacao")
-        ligacao.set_labels("liga duas lampadas")
-        ligacao.set_prompt_text("liga mais de uma lampada juntas?{sim nao}")
+        qt_teclas = RuleVariable(self.br, "qt_teclas")
+        qt_teclas.set_labels("qtd teclas do modulo")
+        qt_teclas.set_prompt_text("quantas teclas possue o interruptor? {1 2 3}")
 
+        ac_iluminacao = RuleVariable(self.br, "ac_iluminacao")
+        ac_iluminacao.set_labels("acionamento iluminacao")
+        ac_iluminacao.set_prompt_text("interruptor aciona mais de uma iluminacao? {sim nao}")
+                      
+        ac_ponto = RuleVariable(self.br, "ac_ponto")
+        ac_ponto.set_labels("ponto iluminacao")
+        ac_ponto.set_prompt_text("interrutor aciona mesma iluminacao em pontos distintos? {sim nao}")
+
+        ac_tensao = RuleVariable(self.br, "ac_tensao")
+        ac_tensao.set_labels("teste de tensao fase")
+        ac_tensao.set_prompt_text("existe tensao na fase do interruptor? {sim nao}")
+
+        cb_conect = RuleVariable(self.br, "cb_conect")
+        cb_conect.set_labels("conexão do cabo")
+        cb_conect.set_prompt_text("cabos conectados corretamente fase e retorno? {sim nao}")
+                   
         c_equals = Condition("=")
         c_not_equals = Condition("!=")
         c_less_than = Condition("<")
 
-        int_simples = Rule(self.br, "int_simples", [
-            Clause(quantas_teclas, c_equals, "nao"),
-            Clause(acionamento, c_equals, "nao"),
-            Clause(ligacao, c_equals, "nao"),
-            Clause(tomada_int, c_equals, "nao")
-        ], Clause(problema_eletrico, c_equals, "Interruptor Simples\n"))
+        Regra01 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar entrada de retorno e neutro iluminacao\n"))
 
-        int_duplo = Rule(self.br, "int_duplo", [
-            Clause(quantas_teclas, c_equals, "sim"),
-            Clause(acionamento, c_equals, "nao"),
-            Clause(ligacao, c_equals, "sim"),
-            Clause(tomada_int, c_equals, "nao")
-        ], Clause(problema_eletrico, c_equals, "Interruptor Duplo\n"))
-        #print("Abrir modulo, verificar Fase e Retorno, checar soquete"))
+        Regra02 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar retorno e neutro das lampadas\n"))
 
         return self.br
     
@@ -66,9 +86,11 @@ class RuleBaseEletric:
     
     def demo_bc(self, LOG):
         LOG.append("\n --- Ajustando valores para Tipo de problema eletrico para demo BackwardChain ---")
-        self.br.set_variable_value("interruptor", None)
-        self.br.set_variable_value("quantas_teclas", None)
-        self.br.set_variable_value("acionamento", None)
-        self.br.set_variable_value("ligacao", None)
-        self.br.set_variable_value("tomada_int", None)
+        self.br.set_variable_value("tp_interruptor", None)
+        self.br.set_variable_value("tr_iluminacao", None)
+        self.br.set_variable_value("qt_teclas", None)
+        self.br.set_variable_value("ac_iluminacao", None)
+        self.br.set_variable_value("ac_ponto", None)
+        self.br.set_variable_value("ac_tensao", None)
+        self.br.set_variable_value("cb_conect", None)
         self.br.display_variables(LOG)

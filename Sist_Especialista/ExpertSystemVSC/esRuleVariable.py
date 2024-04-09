@@ -16,7 +16,7 @@ class RuleVariable(Variable):
         self.update_clauses()
 
     def ask_user(self):
-        print("Ask User for Value")
+        #print("Ask User for Value")
         print(self.promptText)
         answer = input()
         self.set_value(answer)
