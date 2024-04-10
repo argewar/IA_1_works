@@ -73,6 +73,367 @@ class RuleBaseEletric:
             Clause(cb_conect, c_equals, "sim")
         ], Clause(problema_iluminacao, c_equals, "verificar retorno e neutro das lampadas\n"))
 
+        Regra03 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente\n"))
+
+        Regra04 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente\n"))
+
+        Regra05 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade, verificar retorno e neutro iluminacao\n"))
+
+        Regra06 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "conectar cabos nos bornes de retorno e fase corretamente\n"))
+
+        Regra07 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "conectar cabos nos bornes de retorno e fase corretamente, verificar Retorno e Neutro das lampadas caso não acione iluminacao\n"))
+
+        Regra08 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente, conectar cabos de fase e retorno corretamente\n"))
+
+        Regra09 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente, conectar cabos de fase e retorno corretamente\n"))
+
+        Regra10 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, conectar cabos de fase e retorno\n"))
+
+        Regra11 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade, verificar retorno e neutro iluminacao\n"))
+
+        Regra12 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente, verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade\n"))
+
+        Regra13 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente, verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade\n"))
+
+        Regra14 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade, verificar retorno e neutro iluminacao\n"))
+
+        Regra15 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "conectar cabos nos bornes de retorno e fase corretamente\n"))
+
+        Regra16 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "conectar cabos nos bornes de retorno e fase corretamente\n"))
+
+        Regra17 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente, conectar cabos de fase e retorno corretamente\n"))
+
+        Regra18 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, conectar cabos de fase e retorno\n"))
+
+        Regra19 = Rule(self.br, "simples", [
+            Clause(tp_interruptor, c_equals, "simples"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "1"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade, verificar retorno e neutro iluminacao, conectar cabos de retorno e fase corretamente\n"))
+
+        Regra20 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar entrada de retorno e neutro iluminacao\n"))
+
+        Regra21 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar retorno e neutro das lampadas\n"))
+
+        Regra22 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente\n"))
+
+        Regra23 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente\n"))
+
+        Regra24 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade, verificar retorno e neutro iluminacao\n"))
+
+        Regra25 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "conectar cabos nos bornes de retorno e fase corretamente\n"))
+
+        Regra26 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "conectar cabos nos bornes de retorno e fase corretamente, verificar Retorno e Neutro das lampadas caso não acione iluminacao\n"))
+
+        Regra27 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente, conectar cabos de fase e retorno corretamente\n"))
+
+        Regra28 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente, conectar cabos de fase e retorno corretamente\n"))
+
+        Regra29 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, conectar cabos de fase e retorno\n"))
+
+        Regra30 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade, verificar retorno e neutro iluminacao\n"))
+
+        Regra31 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente, verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade\n"))
+
+        Regra32 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente, verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade\n"))
+
+        Regra33 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade, verificar retorno e neutro iluminacao\n"))
+
+        Regra34 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "conectar cabos nos bornes de retorno e fase corretamente\n"))
+
+        Regra35 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "conectar cabos nos bornes de retorno e fase corretamente\n"))
+
+        Regra36 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "nao"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "sim"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "trocar a iluminacao e testar novamente, conectar cabos de fase e retorno corretamente\n"))
+
+        Regra37 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "nao"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "nao")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, conectar cabos de fase e retorno\n"))
+
+        Regra38 = Rule(self.br, "duplo", [
+            Clause(tp_interruptor, c_equals, "duplo"),
+            Clause(tr_iluminacao, c_equals, "sim"),
+            Clause(qt_teclas, c_equals, "2"),
+            Clause(ac_iluminacao, c_equals, "sim"),
+            Clause(ac_ponto, c_equals, "nao"),
+            Clause(ac_tensao, c_equals, "nao"),
+            Clause(cb_conect, c_equals, "sim")
+        ], Clause(problema_iluminacao, c_equals, "verificar disjuntor de iluminacao, verificar rompimento de cabos por continuidade, verificar retorno e neutro iluminacao, conectar cabos de retorno e fase corretamente\n"))
+
+
         return self.br
     
     #def demo_fc(self, LOG):
