@@ -1,9 +1,8 @@
-
 import random
 from AbstractEspecialista import AbstractEspecialista
 
 # Estudante 'é-um' AbstractEspecialista
-class Estudante(AbstractEspecialista):
+class AnaCom(AbstractEspecialista):
 
     @property
     def eh_ativado(self):
@@ -24,4 +23,3 @@ class Estudante(AbstractEspecialista):
     def contribui(self):
         self.QuadroNegro.adicionaContribuicao([[self.__class__.__name__, self.expertise]])
         self.QuadroNegro.atualizaProgresso(self.progresso)
-

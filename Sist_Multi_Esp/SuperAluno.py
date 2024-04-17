@@ -1,6 +1,6 @@
 
 import random
-from multiespecialista.especialista.Aluno import Aluno
+from Aluno import Aluno
 
 # SuperAluno 'é-um' Aluno
 class SuperAluno(Aluno):

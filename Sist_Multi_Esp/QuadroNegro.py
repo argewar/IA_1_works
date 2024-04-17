@@ -3,14 +3,12 @@ class QuadroNegro(object):
 
     def __init__(self):
         self.especialistas = []
-        self.estadoCompartilhado = {'problemas' : ['soma','maximo','minimo','potencia','raiz'],
-                                    'instancias-de-problemas' : {'soma' : [],
-                                                                 'maximo' : [],
-                                                                 'minimo' : [],
-                                                                 'potencia' : [],
-                                                                 'raiz' : []},
-                                    'contribuicoes' : [],
-                                    'progresso' : 0}
+        self.estadoCompartilhado = {
+            'problemas' : ['projeto'],
+            'instancias-de-problemas' : {
+                'projeto' : (),},
+                'contribuicoes' : [],
+                'progresso' : 0}
 
     def adicionaEspecialista(self, especialista):
         self.especialistas.append(especialista)

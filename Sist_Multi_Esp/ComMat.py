@@ -1,9 +1,8 @@
-
 import random
 from AbstractEspecialista import AbstractEspecialista
 
 # Professor 'é-um' AbstractEspecialista
-class Professor(AbstractEspecialista):
+class ComMat(AbstractEspecialista):
 
     @property
     def eh_ativado(self):

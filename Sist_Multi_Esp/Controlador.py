@@ -5,7 +5,7 @@
 # adiciona o resultado/contribuição na lista de contribuições do quadro-negro.
 class Controlador(object):
 
-    def __init__(self, quadro_negro, GeradorDeTarefa, limite = 120):
+    def __init__(self, quadro_negro, GeradorDeTarefa, limite = 1):
         self.QuadroNegro = quadro_negro
         self.GeradorDeTarefa = GeradorDeTarefa
         self.limite = limite    # limite para interrompter o fanção loop

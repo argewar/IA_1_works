@@ -1,13 +1,13 @@
-#!/usr/bin/env python
 
-from multiespecialista.blackboard.QuadroNegro import QuadroNegro
-from multiespecialista.controlador.Controlador import Controlador
-from multiespecialista.geradordetarefa.GeradorDeTarefa import GeradorDeTarefa
-from multiespecialista.especialista.Aluno import Aluno
-from multiespecialista.especialista.Estudante import Estudante
-from multiespecialista.especialista.Professor import Professor
-from multiespecialista.especialista.SuperAluno import SuperAluno
-from multiespecialista.especialista.SuperEstudante import SuperEstudante
+
+from QuadroNegro import QuadroNegro
+from Controlador import Controlador
+from GeradorDeTarefa import GeradorDeTarefa
+from Aluno import Aluno
+from Estudante import Estudante
+from Professor import Professor
+from SuperAluno import SuperAluno
+from SuperEstudante import SuperEstudante
 
 if __name__ == '__main__':
 
