@@ -1,9 +1,9 @@
-
+import random
 import abc
+
 
 # operacões que os todos especialistas devem implementar.
 class AbstractEspecialista(object):
-
     __metaclass__ = abc.ABCMeta
 
     def __init__(self, quadro_negro):

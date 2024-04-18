@@ -22,6 +22,13 @@ class Cliente(object):
     
     def irrad(self):
         return self.ir
+
+class projeto_(Cliente):
+    def calculo(self, consumo, irrad, performance):
+        self.performance = performance
+        self.irrad = irrad
+        self.consumo_diario = consumo
+        return (self.consumo_diario/self.irrad)/self.performance
     
 cliente = Cliente()
 cliente.variaveis(4.29, 0.89, 150, 0.82, 4.29)
@@ -30,5 +37,8 @@ cliente_preco = cliente.tarifa()
 cliente_pagamento = cliente.pagamento()
 cliente_perfomance = cliente.performance()
 cliente_irrad = cliente.irrad()
+calculo = projeto_()
+calculado = calculo.calculo(4.54, 4.29, 0.82)
+
 
 

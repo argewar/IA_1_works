@@ -1,17 +1,69 @@
+import abc
+import math
 
-import random
+class Cliente(object):
+    def variaveis(self, kWh, preco, pay, pr, ir):
+        self.kWh = kWh
+        self.preco = preco
+        self.pay = pay
+        self.pr = pr
+        self.ir = ir
+    
+    def consumo_diario(self):
+        return self.kWh
+    
+    def tarifa(self):
+        return self.preco
+    
+    def pagamento(self):
+        return self.pay
+    
+    def performance(self):
+        return self.pr
+    
+    def irrad(self):
+        return self.ir
+
+class projeto_(Cliente):
+    def calculo(self, consumo, irrad, performance):
+        self.performance = performance
+        self.irrad = irrad
+        self.consumo_diario = consumo
+        return (self.consumo_diario/self.irrad)/self.performance
+    
+class comercial(projeto_):
+    def analista_(self, pot_mod, calculo_):
+        self.pot_mod = pot_mod
+        self.calculo_= calculo_
+        return self.calculo_/self.pot_mod
+    
+cliente = Cliente()
+cliente.variaveis(4.29, 0.89, 150, 0.82, 4.29)
+csm_diario = cliente.consumo_diario()
+cliente_preco = cliente.tarifa()
+cliente_pagamento = cliente.pagamento()
+cliente_perfomance = cliente.performance()
+cliente_irrad = cliente.irrad()
+calculo = projeto_()
+calculado = calculo.calculo(4.54, 4.29, 0.82)
+analista = comercial()
+analisado = analista.analista_(550/1000, calculado)
+analisado = math.ceil(analisado)
+
 
 class GeradorDeTarefa(object):
-
     def __init__(self, quadro_negro):
         self.QuadroNegro = quadro_negro
 
     def projeto(self):
-        p = ()
-        return p  # Ex: p = [14, 34]
-
+        p = [calculado]
+        return ["potência instalada (kWp): {:.4f}".format(p[0])]
     
-
+    def potencia(self):
+        q = [analisado]
+        return ["número de módulos: {: }".format(q[0])]
+    
     def adicionaTarefa(self):
         self.QuadroNegro.adicionaTarefa('projeto', self.projeto())
+        self.QuadroNegro.adicionaTarefa('potencia', self.potencia())
         
