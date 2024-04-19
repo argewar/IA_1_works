@@ -18,9 +18,7 @@ class RuleBaseEletric:
         #trabalhar problemas nos tipos de interruptores (simples, duplo, triplo, paralelo)
 
         problema_iluminacao = RuleVariable(self.br, "iluminacao")
-        problema_iluminacao.set_labels("problema eletrico na iluminacao")
-        problema_iluminacao.set_prompt_text("qual falha eletrica a iluminacao esta apresentando?{iluminacao }")
-
+        
         tp_interruptor = RuleVariable(self.br, "tp_interruptor")
         tp_interruptor.set_labels("simples duplo paralelo")
         tp_interruptor.set_prompt_text("qual tipo de interruptor? {simples duplo paralelo}")
@@ -626,14 +624,17 @@ class RuleBaseEletric:
 
         return self.br
     
-    #def demo_fc(self, LOG):
-        #LOG.append("\n --- Ajustando valores para Tipo de problema eletrico para demo BackwardChain ---")
-        #self.br.set_variable_value("iluminacao", None)
-        #self.br.set_variable_value("quantas_teclas", "nao")
-        #self.br.set_variable_value("acionamento", "nao")
-        #self.br.set_variable_value("ligacao", "nao")
-        #self.br.set_variable_value("tomada_int", "nao")
-        #self.br.display_variables(LOG)
+    def demo_fc(self, LOG):
+        LOG.append("\n --- Ajustando valores para Tipo de problema eletrico para demo BackwardChain ---")
+        self.br.set_variable_value("tp_interruptor", "duplo")
+        self.br.set_variable_value("tr_iluminacao", "sim")
+        self.br.set_variable_value("qt_teclas", "2")
+        self.br.set_variable_value("ac_iluminacao", "nao")
+        self.br.set_variable_value("ac_ponto", "nao")
+        self.br.set_variable_value("ac_tensao", "nao")
+        self.br.set_variable_value("cb_conect", "sim")
+        self.br.display_variables(LOG)
+
     
     def demo_bc(self, LOG):
         LOG.append("\n --- Ajustando valores para Tipo de problema eletrico para demo BackwardChain ---")

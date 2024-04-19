@@ -8,7 +8,7 @@ from ComMat import ComMat
 
 
 if __name__ == '__main__':
-    cliente = Cliente()
+    cliente = Cliente.__init__(4.29, 0.89, 150, 0.82, 4.29)
     quadro_negro = QuadroNegro()
     GeradorDeTarefa = GeradorDeTarefa(quadro_negro)
 

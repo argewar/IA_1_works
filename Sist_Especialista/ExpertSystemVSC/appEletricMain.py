@@ -10,7 +10,7 @@ class Main:
             # RuleBaseVehicle recebe dois parâmetros:
             # o primeiro é nome0
             # 1
-            # da base de regras e
+            # da base de regras e1
             # o segundo é lista de várias presentes na base de regras.
             # Essas variáveis fazem parte dos possíveis objetivos
             br_eletric = RuleBaseEletric("Problemas Eletricos","[iluminacao, tomada, equipamento], :")

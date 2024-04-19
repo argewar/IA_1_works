@@ -2,7 +2,7 @@ import random
 import abc
 
 class Cliente(object):
-    def variaveis(self, kWh, preco, pay, pr, ir):
+    def __init__(self, kWh, preco, pay, pr, ir):
         self.kWh = kWh
         self.preco = preco
         self.pay = pay
@@ -30,26 +30,18 @@ class projeto_(Cliente):
         self.irrad = irrad
         self.consumo_diario = consumo
         return (self.consumo_diario/self.irrad)/self.performance
-    
-cliente = Cliente()
-cliente.variaveis(4.29, 0.89, 150, 0.82, 4.29)
-csm_diario = cliente.consumo_diario()
-cliente_preco = cliente.tarifa()
-cliente_pagamento = cliente.pagamento()
-cliente_perfomance = cliente.performance()
-cliente_irrad = cliente.irrad()
-calculo = projeto_()
-calculado = calculo.calculo(4.54, 4.29, 0.82)
 
 class GeradorDeTarefa(object):
     def __init__(self, quadro_negro):
         self.QuadroNegro = quadro_negro
 
     def projeto(self):
+        calculado = projeto_()
         p = [calculado]
         return ["potência instalada (kWp): {:.4f}".format(p[0])]
     
     def potencia(self):
+        calculado = projeto_()
         q = [calculado]
         return q
     
@@ -139,7 +131,7 @@ class Controlador(object):
         # retorna todas as contribuições postadas no quadro-negro pelos especialistas.
         return self.QuadroNegro.estadoCompartilhado[0]['contribuicoes']
 
-class EngEletricista(AbstractEspecialista):
+class EngenheiroFotovoltaico(AbstractEspecialista):
     def __init__(self, quadro_negro):
         self.QuadroNegro = quadro_negro
 
@@ -163,21 +155,45 @@ class EngEletricista(AbstractEspecialista):
         self.QuadroNegro.adicionaContribuicao([[self.__class__.__name__, self.expertise]])
         self.QuadroNegro.atualizaProgresso(self.progresso)
 
-class OutroEspecialista(AbstractEspecialista):
+class PesquisadorMateriaisFotovoltaicos(AbstractEspecialista):
     def __init__(self, quadro_negro):
         self.QuadroNegro = quadro_negro
 
     @property
     def eh_ativado(self):
-        if 'potencia' in [problema['problema'] for problema in self.QuadroNegro.estadoCompartilhado]:
+        if 'projeto' in [problema['problema'] for problema in self.QuadroNegro.estadoCompartilhado]:
             return True
         else:
             return False
 
     @property
     def expertise(self):
-        q = self.QuadroNegro.pegaTarefa('potencia')
-        return 'potencia', q
+        p = self.QuadroNegro.pegaTarefa('projeto')
+        return 'projeto', p
+
+    @property
+    def progresso(self):
+        return random.randint(1, 5)
+
+    def contribui(self):
+        self.QuadroNegro.adicionaContribuicao([[self.__class__.__name__, self.expertise]])
+        self.QuadroNegro.atualizaProgresso(self.progresso)
+
+class EngenheiroControleSolar(AbstractEspecialista):
+    def __init__(self, quadro_negro):
+        self.QuadroNegro = quadro_negro
+
+    @property
+    def eh_ativado(self):
+        if 'projeto' in [problema['problema'] for problema in self.QuadroNegro.estadoCompartilhado]:
+            return True
+        else:
+            return False
+
+    @property
+    def expertise(self):
+        p = self.QuadroNegro.pegaTarefa('projeto')
+        return 'projeto', p
 
     @property
     def progresso(self):
@@ -188,12 +204,13 @@ class OutroEspecialista(AbstractEspecialista):
         self.QuadroNegro.atualizaProgresso(self.progresso)
 
 if __name__ == '__main__':
-    cliente = Cliente()
+    cliente = Cliente(4.29, 0.89, 150, 0.82, 4.29)
     quadro_negro = QuadroNegro()
     GeradorDeTarefa = GeradorDeTarefa(quadro_negro)
 
-    quadro_negro.adicionaEspecialista(EngEletricista(quadro_negro))
-    quadro_negro.adicionaEspecialista(OutroEspecialista(quadro_negro))
+    quadro_negro.adicionaEspecialista(EngenheiroFotovoltaico(quadro_negro))
+    quadro_negro.adicionaEspecialista(PesquisadorMateriaisFotovoltaicos(quadro_negro))
+    quadro_negro.adicionaEspecialista(EngenheiroControleSolar(quadro_negro))
     
     contribuicoes = Controlador(quadro_negro, GeradorDeTarefa, 1).loop()
 
