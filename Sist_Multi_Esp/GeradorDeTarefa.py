@@ -43,22 +43,21 @@ class Comercial(projeto_):
 cliente = Cliente()
 cliente.variaveis(4.29, 0.89, 150, 0.82, 4.29)
 
+analista = Comercial()
+calculo = projeto_()
+calculado = calculo.calculo(4.54, 4.29, 0.82)
+analisado = analista.analista_(550/1000, calculado)
+analisado = math.ceil(analisado)
+
 class GeradorDeTarefa(object):
     def __init__(self, quadro_negro):
         self.QuadroNegro = quadro_negro
 
     def projeto(self):
-        calculo = projeto_()
-        calculado = calculo.calculo(4.54, 4.29, 0.82)
         p = [calculado]
         return ["potência instalada (kWp): {:.4f}".format(p[0])]
     
     def potencia(self):
-        analista = Comercial()
-        calculo = projeto_
-        calculado = calculo.calculo(4.54, 4.29, 0.82)
-        analisado = analista.analista_(550/1000, calculado)
-        analisado = math.ceil(analisado)
         q = [analisado]
         return ["número de módulos: {: }".format(q[0])]
     
