@@ -4,16 +4,17 @@ from Controlador import Controlador
 from GeradorDeTarefa import GeradorDeTarefa
 from EngEletricista import EngEletricista
 from OutroEspecialista import AnalistaComercial
-from ComMat import ComMat
+from Outro2Especialista import AnalistaMaterial
 
 
 if __name__ == '__main__':
-    cliente = Cliente.__init__(4.29, 0.89, 150, 0.82, 4.29)
+    cliente = Cliente.__init__(4.29, 0.89, 990, 0.82, 4.29)
     quadro_negro = QuadroNegro()
     GeradorDeTarefa = GeradorDeTarefa(quadro_negro)
 
     quadro_negro.adicionaEspecialista(EngEletricista(quadro_negro))
     quadro_negro.adicionaEspecialista(AnalistaComercial(quadro_negro))
+    quadro_negro.adicionaEspecialista(AnalistaMaterial(quadro_negro))
     
     contribuicoes = Controlador(quadro_negro, GeradorDeTarefa, 1).loop()
 

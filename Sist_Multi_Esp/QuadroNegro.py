@@ -13,7 +13,13 @@ class QuadroNegro(object):
                 'problema': 'analise ',
                 'instancias-de-problemas': [],
                 'contribuicoes': [],
-                'progresso': 0
+                'progresso': 1
+            },
+            {
+                'problema': 'material ',
+                'instancias-de-problemas': [],
+                'contribuicoes': [],
+                'progresso': 2
             }
         ]
 
@@ -34,9 +40,11 @@ class QuadroNegro(object):
         return self.estadoCompartilhado[0]['instancias-de-problemas'].pop(0)
 
     def mostraTarefas(self):
-        for i in range(2):
-            print('problema:', self.estadoCompartilhado[i]['problema'])
+        for prob in self.estadoCompartilhado:
+            print('problema:', prob['problema'])
         print('instancias-de-problemas:', end='')
         for instancia in self.estadoCompartilhado[0]['instancias-de-problemas']:
+            print(instancia, end='')
+        for instancia in self.estadoCompartilhado[0]['contribuicoes']:
             print(instancia, end='')
         print('\n')

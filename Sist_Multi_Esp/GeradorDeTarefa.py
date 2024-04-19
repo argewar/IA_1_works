@@ -40,6 +40,12 @@ class Comercial(projeto_):
         self.calculo_= calculo_
         return self.calculo_/self.pot_mod
     
+class Material(Cliente):
+    def material_(self, qtd, preco):
+        self.qtd = qtd
+        self.preco = preco
+        return self.qtd*self.preco
+    
 cliente = Cliente()
 cliente.variaveis(4.29, 0.89, 150, 0.82, 4.29)
 
@@ -48,6 +54,9 @@ calculo = projeto_()
 calculado = calculo.calculo(4.54, 4.29, 0.82)
 analisado = analista.analista_(550/1000, calculado)
 analisado = math.ceil(analisado)
+mat = Material()
+material_use = mat.material_(analisado, 990)
+material_use = math.ceil(material_use)
 
 class GeradorDeTarefa(object):
     def __init__(self, quadro_negro):
@@ -56,6 +65,10 @@ class GeradorDeTarefa(object):
     def projeto(self):
         p = [calculado]
         return ["potência instalada (kWp): {:.4f}".format(p[0])]
+  
+    def material_usado(self):
+        c = [material_use]
+        return ["preço sugerido R$: {: }".format(c[0])]
     
     def potencia(self):
         q = [analisado]
@@ -64,4 +77,6 @@ class GeradorDeTarefa(object):
     def adicionaTarefa(self):
         self.QuadroNegro.adicionaTarefa('projeto', self.projeto())
         self.QuadroNegro.adicionaTarefa('potencia', self.potencia())
+        self.QuadroNegro.adicionaTarefa('material', self.material_usado())
+
         
